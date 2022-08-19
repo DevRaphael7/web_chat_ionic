@@ -1,0 +1,69 @@
+$me-bg: rgb(29, 45, 58);
+$you-bg: rgb(150, 148, 253);
+
+.chat {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 10px;
+  height: calc(100% - 48px);
+  justify-content: flex-end;
+  flex-direction: column;
+
+  &.active-chat {
+      display: block;
+      display: flex;
+      .bubble {
+          transition-timing-function: cubic-bezier(.4,-.04, 1, 1);
+          @for $i from 1 through 10 {
+              &:nth-of-type(#{$i}) {
+                  animation-duration: .15s * $i;
+              }
+          }
+      }
+  }
+
+}
+
+.bubble {
+    font-size: 16px;
+    position: relative;
+    display: inline-block;
+    clear: both;
+    margin-bottom: 8px;
+    padding: 13px 14px;
+    vertical-align: top;
+    border-radius: 5px;
+    &:before {
+        position: absolute;
+        top: 19px;
+        display: block;
+        width: 8px;
+        height: 6px;
+        content: '\00a0';
+        transform: rotate(29deg) skew(-35deg);
+    }
+    &.you {
+        float: left;
+        color: white;
+        font-weight: 400;
+        background-color: $you-bg;
+        align-self: flex-start;
+        animation-name: slideFromLeft;
+        &:before {
+            left: -3px;
+            background-color: $you-bg;
+        }
+    }
+    &.me {
+      float: right;
+      color: white;
+      font-weight: 400;
+      background-color: $me-bg;
+      align-self: flex-end;
+      animation-name: slideFromRight;
+      &:before {
+          right: -3px;
+          background-color: $me-bg;
+      }
+  }
+}

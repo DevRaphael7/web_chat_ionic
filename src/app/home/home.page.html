@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Chat
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,23 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Chat</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <app-search-user></app-search-user>
+    <ion-item class="user-contact" (click)="goToChatPage()">
+      <ion-thumbnail slot="start">
+        <ion-img src="https://www.w3schools.com/w3css/img_avatar3.png" width="300" class="avatar img"></ion-img>
+      </ion-thumbnail>
+      <div>
+        <ion-label class="name">
+          Teste
+        </ion-label>
+        <p class="numero">Número</p>
+      </div>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

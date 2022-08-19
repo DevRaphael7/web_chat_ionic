@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { ChatPagePage } from '../pages/chat-page/chat-page.page';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,9 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  goToChatPage() {
+    this.router.navigateByUrl('chat-page');
+  }
 }

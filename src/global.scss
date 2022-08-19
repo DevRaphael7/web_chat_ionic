@@ -24,3 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.avatar{
+  &.img{
+    border-radius: 10px;
+  }
+}
+
+.row{
+  display: flex;
+}
+
+.center-v{
+  align-items: center;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.end{
+  bottom: 0;
+}
+
+.max-width{
+  width: 100%;
+}
