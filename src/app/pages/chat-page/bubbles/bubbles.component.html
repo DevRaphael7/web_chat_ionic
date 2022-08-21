@@ -1,8 +1,8 @@
 <div class="chat">
-  <div class="bubble you">
-    Hello, can you hear me?
-  </div>
-  <div class="bubble me">
-    Hello, can you hear me?
+  <div 
+    *ngFor="let message of getMessages()"
+    [class]="verifyUserMessage(message.numero) ? 'bubble me' : 'bubble you'"
+  >
+    {{ message.message }}
   </div>
 </div>

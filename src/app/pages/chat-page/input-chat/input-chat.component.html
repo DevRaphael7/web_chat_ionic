@@ -1,4 +1,11 @@
 <div class="row center-v chat-container max-width">
-  <ion-input placeholder="Digite uma mensagem" class="max-width"></ion-input>
+  <ion-input 
+    placeholder="Digite uma mensagem" 
+    class="max-width"
+    [(ngModel)]="messagesUser.message"
+  ></ion-input>
   <ion-icon name="happy"></ion-icon>
+  <ion-button color="primary" (click)="sendMessage()">
+    <ion-icon name="send"></ion-icon>
+  </ion-button>
 </div>
