@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { MetaReducer, StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,8 @@ const config: SocketIoConfig = {
     IonicModule.forRoot(),
     AppRoutingModule,
     SocketIoModule.forRoot(config),
-    StoreModule.forRoot(reduxState)
+    StoreModule.forRoot(reduxState),
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

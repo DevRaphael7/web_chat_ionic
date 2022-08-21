@@ -31,8 +31,16 @@
   }
 }
 
+.t-center{
+  text-align: center;
+}
+
 .row{
   display: flex;
+}
+
+.grid{
+  display: grid;
 }
 
 .center-v{
@@ -49,4 +57,22 @@
 
 .max-width{
   width: 100%;
+}
+
+.max-height{
+  height: 100;
+}
+
+.center-h{
+  justify-content: center;
+}
+
+.spacer{
+  margin-top: 25px;
+}
+
+.radius-10{
+  border-radius: 10px;
+
+  --border-radius: 22px;
 }

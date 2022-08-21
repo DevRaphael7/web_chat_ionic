@@ -8,12 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'create-user',
     pathMatch: 'full'
   },
   {
     path: 'chat-page',
     loadChildren: () => import('./pages/chat-page/chat-page.module').then( m => m.ChatPagePageModule)
+  },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/CreateUserPage/create-user/create-user.module').then( m => m.CreateUserPageModule)
   },
 ];
 

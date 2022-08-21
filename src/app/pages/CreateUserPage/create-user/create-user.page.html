@@ -1,0 +1,21 @@
+<ion-content color="light">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide class="slide-container grid center-h">
+      <div class="row center-h">
+        <ion-icon name="chatbubble-ellipses" class="icon size"></ion-icon>
+      </div>
+      <span class="spacer"></span>
+      <ion-title class="welcome-text">Bem-vindo</ion-title>
+      <span class="spacer"></span>
+      <p class="t-center">Este aplicativo foi feito com o propósito de treinar programação com Sockt.io.</p>
+    </ion-slide>
+    <ion-slide class="slide-container grid center-h center-v">
+      <span class="spacer"></span>
+      <ion-title class="welcome-text">Começar</ion-title>
+      <span class="spacer"></span>
+      <ion-button color="primary" (click)="openModal()">
+        Aqui
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
