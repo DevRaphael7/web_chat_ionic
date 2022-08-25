@@ -3,7 +3,7 @@ import { UserInformations } from 'src/app/models/user-informations.model';
 import * as actions from '../actions/user.actions';
 
 const initialState: UserInformations = {
-  name: null,
+  nome: null,
   numero: null,
   avatar: null
 }

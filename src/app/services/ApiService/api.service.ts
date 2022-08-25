@@ -14,12 +14,12 @@ export class ApiService {
     this.url = url;
   }
 
-  public getMethod(endpoint: string) {
-    return this.http.get(this.url + endpoint);
+  public getMethod<T>(endpoint: string) {
+    return this.http.get<T>(this.url + endpoint);
   }
 
   public postMethod<T>(endpoint: string, json: T){
-    return this.http.post(this.url + endpoint, {}, json);
+    return this.http.post(this.url + endpoint, json);
   }
 
 }

@@ -5,20 +5,21 @@
   <span class="spacer"></span>
   <ion-list>
     <div class="row center-h" style="position: relative">
-      <ion-img src="../../../../assets/icon/man-person.webp" width="300" class="avatar img img-size radius"></ion-img>
-      <ion-button color="primary" class="cam-button">
+      <ion-img src="{{ getUser().avatar }}" width="300" class="avatar img img-size radius"></ion-img>
+      <ion-button color="primary" class="cam-button" (click)="takePhoto()">
         <ion-icon name="camera" color="light"></ion-icon>
       </ion-button>
     </div>
     <ion-item>
       <ion-label position="floating">Nome</ion-label>
-      <ion-input placeholder="Seu nome"></ion-input>
+      <ion-input #nameUser placeholder="Seu nome" (ionChange)="setName(nameUser.value)" type="text"></ion-input>
     </ion-item>
   </ion-list>
   <span class="spacer"></span>
   <div class="row center-h">
-    <ion-button color="primary">
+    <ion-button color="primary" (click)="sendUserApi()" *ngIf="!(getSpinnerState() | async)">
       Salvar <ion-icon name="save" slot="end"></ion-icon>
     </ion-button>
+    <app-spinner-component></app-spinner-component>
   </div>
 </ion-content>

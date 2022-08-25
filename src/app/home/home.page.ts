@@ -15,7 +15,6 @@ import { UserNgrxService } from '../services/ngrx/user-ngrx.service';
 export class HomePage {
 
   constructor(private router: Router, private userNgrx: UserNgrxService) {
-    this.setUsers();
     this.userNgrx.getUser().subscribe(value => {
       console.log(value);
     });
@@ -23,13 +22,5 @@ export class HomePage {
 
   goToChatPage() {
     this.router.navigateByUrl('chat-page');
-  }
-
-  setUsers() {
-    this.userNgrx.setUser({
-      name: 'Raphael',
-      numero: Math.random(),
-      avatar: ''
-    });
   }
 }

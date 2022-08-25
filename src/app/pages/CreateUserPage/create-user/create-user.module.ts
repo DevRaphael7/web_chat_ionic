@@ -8,6 +8,7 @@ import { CreateUserPageRoutingModule } from './create-user-routing.module';
 
 import { CreateUserPage } from './create-user.page';
 import { CreateAUserComponent } from '../create-auser/create-auser.component';
+import { SpinnerComponentComponent } from 'src/app/components/spinner-component/spinner-component.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { CreateAUserComponent } from '../create-auser/create-auser.component';
     IonicModule,
     CreateUserPageRoutingModule
   ],
-  declarations: [CreateUserPage, CreateAUserComponent]
+  declarations: [CreateUserPage, CreateAUserComponent, SpinnerComponentComponent]
 })
 export class CreateUserPageModule {}

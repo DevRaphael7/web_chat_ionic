@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { UserNgrxService } from 'src/app/services/ngrx/user-ngrx.service';
 import { CreateAUserComponent } from '../create-auser/create-auser.component';
 
 @Component({
@@ -17,9 +19,11 @@ export class CreateUserPage implements OnInit {
     speed: 400
   };
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private userRedux: UserNgrxService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.verifyUserIsSeted()
+  }
 
   async openModal(){
     const modal = await this.modalCtrl.create({
@@ -31,6 +35,16 @@ export class CreateUserPage implements OnInit {
     });
 
     await modal.present();
+  }
+  verifyUserIsSeted = () => {
+    let verify: boolean;
+    this.userRedux.getUser().subscribe(value => {
+      if(value.nome) verify = true;
+    })
+
+    if(verify){
+      this.router.navigateByUrl('home');
+    }
   }
 
 }

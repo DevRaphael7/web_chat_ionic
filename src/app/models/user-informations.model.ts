@@ -1,5 +1,5 @@
 export interface UserInformations{
-    name: string;
-    numero: number;
+    nome: string;
+    numero?: number;
     avatar?: string;
 }

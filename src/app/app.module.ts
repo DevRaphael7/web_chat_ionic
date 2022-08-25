@@ -9,11 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
-import { reduxState } from './Ngrx/state.model';
+import { reduxState, StoreModel as AppState } from './Ngrx/state.model';
+import { localStorageSyncReducer } from './Ngrx/local-storage.redux';
 
 const config: SocketIoConfig = {
   url: 'http://127.0.0.1:5000/'
 };
+
+const metaReducers: Array<MetaReducer<AppState>> = [ localStorageSyncReducer ];
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +25,7 @@ const config: SocketIoConfig = {
     IonicModule.forRoot(),
     AppRoutingModule,
     SocketIoModule.forRoot(config),
-    StoreModule.forRoot(reduxState),
+    StoreModule.forRoot(reduxState, { metaReducers }),
     HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
