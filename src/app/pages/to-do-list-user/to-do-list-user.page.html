@@ -1,0 +1,15 @@
+<app-header-menu title="Usuários"></app-header-menu>
+
+<ion-content>
+  <ion-list class="list-users">
+    <ion-row *ngFor="let user of getUsers()" style="margin-bottom: 10px;">
+      <ion-img [src]="user.avatar" class="avatar img img-size radius-img"></ion-img>
+      <ion-title class="name row align-start">
+        {{ user.nome }}
+      </ion-title>
+      <ion-button color="none">
+        <ion-icon name="add-circle" class="row center-v add"></ion-icon>
+      </ion-button>
+    </ion-row>
+  </ion-list>
+</ion-content>

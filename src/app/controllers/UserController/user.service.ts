@@ -39,4 +39,17 @@ export class UserService {
     })
   }
 
+  public getAllUsers(): Promise<ResponseApi<UserInformations[]>> {
+    return new Promise((resolve, reject) => {
+      this.api.getMethod<ResponseApi<UserInformations[]>>('/users').subscribe({
+        next: (value) => {
+          resolve(value)
+        },
+        error: (error) => {
+          reject(error)
+        }
+      })
+    })
+  }
+
 }

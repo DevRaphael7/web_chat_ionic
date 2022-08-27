@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { reduxState, StoreModel as AppState } from './Ngrx/state.model';
 import { localStorageSyncReducer } from './Ngrx/local-storage.redux';
+import { CreateUserPage } from './pages/CreateUserPage/create-user/create-user.page';
 
 const config: SocketIoConfig = {
   url: 'http://127.0.0.1:5000/'

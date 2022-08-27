@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderMenuComponent implements OnInit {
 
   @Input() routeBack: string = 'home';
+  @Input() title: string = 'Página'
 
   constructor(private router: Router) { }
 

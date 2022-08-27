@@ -14,13 +14,15 @@ import { UserNgrxService } from '../services/ngrx/user-ngrx.service';
 })
 export class HomePage {
 
-  constructor(private router: Router, private userNgrx: UserNgrxService) {
-    this.userNgrx.getUser().subscribe(value => {
-      console.log(value);
-    });
-  }
+  constructor(
+    private router: Router,
+    private userNgrx: UserNgrxService) {}
 
   goToChatPage() {
     this.router.navigateByUrl('chat-page');
+  }
+
+  goToTodoListUsersPage() {
+    this.router.navigateByUrl('to-do-list-user')
   }
 }
