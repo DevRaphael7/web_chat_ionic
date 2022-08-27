@@ -1,8 +1,13 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Chat
-    </ion-title>
+  <ion-toolbar class="row" style="padding: 5px">
+    <ion-row class="row align-start">
+      <ion-avatar>
+        <ion-img [src]="getCurrentUser().avatar" class="avatar img"></ion-img>
+      </ion-avatar>
+      <ion-title class="title-page">
+        {{ getCurrentUser().nome }}
+      </ion-title>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
