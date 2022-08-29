@@ -1,12 +1,7 @@
 import { ContactService } from './../controllers/ContactController/contact.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
-import { Socket } from 'ngx-socket-io';
-import { Observable } from 'rxjs';
-import { ConversaModel } from '../models/conversa.model';
 import { UserInformations } from '../models/user-informations.model';
-import { ChatPagePage } from '../pages/chat-page/chat-page.page';
 import { UserNgrxService } from '../services/ngrx/user-ngrx.service';
 import { InterfaxeUxReduxService } from '../services/ngrx/interfaxe-ux-redux.service';
 
