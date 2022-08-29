@@ -27,4 +27,15 @@ export class AlertService {
 
     await alert.present();
   }
+
+  public async successAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Sucesso!',
+      message: message,
+      buttons: ['OK']
+    }) 
+
+    await alert.present();
+  }
+
 }

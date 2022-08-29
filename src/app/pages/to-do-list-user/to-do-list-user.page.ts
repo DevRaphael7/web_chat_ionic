@@ -5,6 +5,7 @@ import { ResponseApi } from 'src/app/models/response-api.model';
 import { UserInformations } from 'src/app/models/user-informations.model';
 import { AlertService } from 'src/app/services/AlertService/alert.service';
 import { InterfaxeUxReduxService } from 'src/app/services/ngrx/interfaxe-ux-redux.service';
+import { ContactService } from 'src/app/controllers/ContactController/contact.service';
 
 @Component({
   selector: 'app-to-do-list-user',
@@ -14,11 +15,13 @@ import { InterfaxeUxReduxService } from 'src/app/services/ngrx/interfaxe-ux-redu
 export class ToDoListUserPage implements OnInit {
 
   private users: UserInformations[] = [];
+  private isLoading: boolean = false;
 
   constructor(
     private userApi: UserService, 
     private uxRedux: InterfaxeUxReduxService,
-    private alert: AlertService  
+    private alert: AlertService,
+    private contactApi: ContactService
   ) { }
 
   ngOnInit() {
@@ -43,6 +46,15 @@ export class ToDoListUserPage implements OnInit {
       this.alert.alertError(erro.error.message);
     })
     this.uxRedux.setSpinner(false)
+  }
+
+  async addContact(user: UserInformations) {
+    if(this.isLoading) return;
+    this.isLoading = true;
+    this.uxRedux.setSpinner(true);
+    this.contactApi.saveContactForUser(user.id)
+    this.uxRedux.setSpinner(false);
+    this.isLoading = false;
   }
 
 }

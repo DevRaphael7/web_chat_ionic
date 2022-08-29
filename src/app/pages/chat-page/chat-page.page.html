@@ -1,6 +1,6 @@
 <app-header-menu></app-header-menu>
 
 <ion-content color="light">
-  <app-bubbles [friend]="getUser()" *ngIf="showBubbles"></app-bubbles>
+  <app-bubbles *ngIf="showBubbles" [friend]="getUser()"></app-bubbles>
   <app-input-chat class="fixed end max-width" [friend]="getUser()"></app-input-chat>
 </ion-content>

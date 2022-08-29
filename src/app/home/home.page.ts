@@ -30,7 +30,7 @@ export class HomePage {
 
   async getAllContactInFlaskApi() {
     this.uxNgrx.setSpinner(true)
-    this.contacts = await this.contatcApi.getContactByMyUserInApi()
+    this.contacts = await this.contatcApi.getAllContactsState()
     this.uxNgrx.setSpinner(false)
   }
 

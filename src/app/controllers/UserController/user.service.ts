@@ -10,7 +10,10 @@ import { UserNgrxService } from 'src/app/services/ngrx/user-ngrx.service';
 })
 export class UserService {
 
-  constructor(private api: ApiService, private userRedux: UserNgrxService) {
+  constructor(
+    private api: ApiService,
+    private userRedux: UserNgrxService
+  ) {
     this.api.setUrl('http://127.0.0.1:5000');
   }
 

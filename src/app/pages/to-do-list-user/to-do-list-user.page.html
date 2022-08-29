@@ -13,7 +13,7 @@
       <ion-title class="name row align-start">
         {{ user.nome }}
       </ion-title>
-      <ion-button color="success">
+      <ion-button color="success" (click)="addContact(user)">
         <ion-icon name="add-circle" class="row center-v add" color="light"></ion-icon>
       </ion-button>
     </ion-row>

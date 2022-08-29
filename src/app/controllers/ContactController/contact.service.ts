@@ -7,6 +7,11 @@ import { ResponseApi } from 'src/app/models/response-api.model';
 import { AlertService } from 'src/app/services/AlertService/alert.service';
 import { ContactNgrxService } from 'src/app/services/ngrx/contact-ngrx.service';
 
+interface SaveContact{
+  numero: number;
+  numeroFriend: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,10 +25,11 @@ export class ContactService {
     private alert: AlertService,
     private contactRedux: ContactNgrxService
   ) { 
+    this.api.setUrl('http://127.0.0.1:5000');
     this.contactRedux.getContactsState().then(value => this.contacts = value)
   }
 
-  private async getAllContactsState() {
+  public async getAllContactsState() {
     if(this.contacts.length != 0){
       return this.contacts;
     } else {
@@ -55,4 +61,34 @@ export class ContactService {
       })
     })
   }
+
+  public async saveContactForUser(friend_id: number) {
+    const user = await this.userRedux.getUserState();
+
+    const newContact: SaveContact = {
+      numero: user.numero,
+      numeroFriend: friend_id
+    };
+
+    this.api.postMethod<SaveContact>('/contact', newContact)
+    .subscribe({
+      next: (value: ResponseApi<null>) => {
+        this.alert.successAlert(value.message)
+      },
+      error: (error: ErrorResponseApi<ResponseApi<null>>) => {
+        console.log(error);
+        if(error.status == 0){
+          this.alert.alertError('Ocorreu um erro na comunicação com a API')
+          return;
+        } else if(error.status == 404) {
+          this.alert.alertError('Página não encontrada!')
+          return;
+        }
+        
+        this.alert.alertError(error.error.message);
+      }
+    })
+  }
+
+
 }

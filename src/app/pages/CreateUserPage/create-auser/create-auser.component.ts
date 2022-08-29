@@ -6,7 +6,6 @@ import { UserInformations } from 'src/app/models/user-informations.model';
 import { AlertService } from 'src/app/services/AlertService/alert.service';
 import { CameraService } from 'src/app/services/camera/camera.service';
 import { InterfaxeUxReduxService } from 'src/app/services/ngrx/interfaxe-ux-redux.service';
-import { UserNgrxService } from 'src/app/services/ngrx/user-ngrx.service';
 
 @Component({
   selector: 'app-create-auser',

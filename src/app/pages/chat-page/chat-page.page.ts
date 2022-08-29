@@ -1,13 +1,12 @@
 import { UserInformations } from 'src/app/models/user-informations.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
 import { ContactNgrxService } from 'src/app/services/ngrx/contact-ngrx.service';
 
 @Component({
   selector: 'app-chat-page',
   templateUrl: './chat-page.page.html',
-  styleUrls: ['./chat-page.page.scss'],
+  styleUrls: ['./chat-page.page.scss']
 })
 export class ChatPagePage implements OnInit {
 
@@ -15,9 +14,10 @@ export class ChatPagePage implements OnInit {
   public showBubbles: boolean = false;
   private user: UserInformations;
 
-  constructor(private route: ActivatedRouteSnapshot, private contactNgRx: ContactNgrxService) {
-    this.getContactByNumber()
-  }
+  constructor(
+    private route: ActivatedRouteSnapshot, 
+    private contactNgRx: ContactNgrxService
+  ) { this.getContactByNumber() }
 
   ngOnInit() {
     this.route.queryParams
@@ -37,5 +37,4 @@ export class ChatPagePage implements OnInit {
   getUser() {
     return this.user;
   }
-
 }
