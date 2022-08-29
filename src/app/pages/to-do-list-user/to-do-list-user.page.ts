@@ -26,8 +26,8 @@ export class ToDoListUserPage implements OnInit {
       Object.keys(value.data).map(key => {
         this.users.push(value.data[key])
       })
-    }).catch(errro => {
-      console.log(errro)
+    }).catch(erro => {
+      console.log(erro)
     })
     this.uxRedux.setSpinner(false)
   }

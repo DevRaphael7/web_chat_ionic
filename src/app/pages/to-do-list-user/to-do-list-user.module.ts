@@ -8,6 +8,7 @@ import { ToDoListUserPageRoutingModule } from './to-do-list-user-routing.module'
 
 import { ToDoListUserPage } from './to-do-list-user.page';
 import { HeaderMenuComponent } from 'src/app/components/header-menu/header-menu.component';
+import { SpinnerComponentComponent } from 'src/app/components/spinner-component/spinner-component.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { HeaderMenuComponent } from 'src/app/components/header-menu/header-menu.
     IonicModule,
     ToDoListUserPageRoutingModule
   ],
-  declarations: [ToDoListUserPage, HeaderMenuComponent]
+  declarations: [ToDoListUserPage, HeaderMenuComponent, SpinnerComponentComponent]
 })
 export class ToDoListUserPageModule {}
