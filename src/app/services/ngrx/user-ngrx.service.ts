@@ -15,6 +15,14 @@ export class UserNgrxService {
 
   getUser = () => this.store.select(selectors.getUser);
 
+  getUserState(): Promise<UserInformations> {
+    return new Promise((resolve, reject) => 
+      this.getUser().subscribe(value => {
+        resolve(value)
+      })
+    )
+  }
+
   setUser = (state: UserInformations) => this.store.dispatch(actions.setUser({ payload: state }));
 
 }

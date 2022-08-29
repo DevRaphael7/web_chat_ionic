@@ -10,31 +10,30 @@ import { UserNgrxService } from 'src/app/services/ngrx/user-ngrx.service';
   templateUrl: './bubbles.component.html',
   styleUrls: ['./bubbles.component.scss'],
 })
-export class BubblesComponent implements OnInit {
+export class BubblesComponent {
 
-  private user: Observable<UserInformations> = null;
+  private user: UserInformations;
   private messages: MessageUser[] = [];
 
   constructor(private socket: Socket, private userNgrx: UserNgrxService) {
     this.getMessagesSocket().subscribe();
-    this.user = this.userNgrx.getUser();
   }
 
-  ngOnInit() {}
-
   getMessages = () => this.messages;
-  getUser = () => this.user;
+  async getUser() {
+    this.user = await this.userNgrx.getUserState();
+  }
 
   verifyUserMessage(numero: number) {
-    let numberUser;
-    this.user.subscribe(value => numberUser = value.numero);
-    return numberUser === numero;
+    return this.user.numero === numero;
   }
 
   getMessagesSocket() {
     return new Observable(() => {
       this.socket.on('conv', (data: MessageUser) => {
-        this.messages.push(data);
+        if(data.numeroDestin == this.user.numero){
+          this.messages.push(data);
+        }
       });
     });
   }

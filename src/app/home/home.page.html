@@ -28,17 +28,17 @@
   </div>
 
   <ion-list>
-    <ion-item class="user-contact" (click)="goToChatPage()">
+    <ion-item class="user-contact" (click)="goToChatPage()" *ngFor="let contact of getContacts()">
       <ion-thumbnail slot="start">
         <ion-avatar class="img-user">
-          <ion-img src="https://www.w3schools.com/w3css/img_avatar3.png" width="300"></ion-img>
+          <ion-img [src]="contact.avatar" width="300"></ion-img>
         </ion-avatar>
       </ion-thumbnail>
       <div>
         <ion-label class="name">
-          Teste
+          {{ contact.nome }}
         </ion-label>
-        <p class="numero">Número</p>
+        <p class="numero">{{ contact.numero }}</p>
       </div>
     </ion-item>
   </ion-list>

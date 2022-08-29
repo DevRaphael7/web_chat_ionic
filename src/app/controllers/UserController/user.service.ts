@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ErrorResponseApi } from 'src/app/models/error-response-api.model';
 import { ResponseApi } from 'src/app/models/response-api.model';
 import { UserInformations } from 'src/app/models/user-informations.model';
 import { ApiService } from 'src/app/services/ApiService/api.service';
@@ -22,7 +23,7 @@ export class UserService {
             ...data,
             numero: value.data.id
           });
-          
+
           resolve(value)
         },
         error: (error: any) => {
@@ -52,7 +53,7 @@ export class UserService {
         next: (value) => {
           resolve(value)
         },
-        error: (error) => {
+        error: (error: ErrorResponseApi<ResponseApi<null>>) => {
           reject(error)
         }
       })
