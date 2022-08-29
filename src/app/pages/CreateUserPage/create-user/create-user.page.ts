@@ -36,6 +36,7 @@ export class CreateUserPage implements OnInit {
 
     await modal.present();
   }
+  
   verifyUserIsSeted = () => {
     let verify: boolean;
     this.userRedux.getUser().subscribe(value => {

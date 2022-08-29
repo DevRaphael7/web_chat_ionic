@@ -1,12 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="row" style="padding: 5px">
-    <ion-row class="row align-start">
-      <ion-avatar>
-        <ion-img [src]="getCurrentUser().avatar" class="avatar img"></ion-img>
+  <ion-toolbar style="padding: 5px">
+    <ion-row class="row center-v">
+      <ion-avatar class="img-user">
+        <ion-img [src]="getCurrentUser().avatar"></ion-img>
       </ion-avatar>
-      <ion-title class="title-page">
-        {{ getCurrentUser().nome }}
-      </ion-title>
+      <app-search-user></app-search-user>
     </ion-row>
   </ion-toolbar>
 </ion-header>
@@ -24,17 +22,17 @@
     </ion-fab-list>
   </ion-fab>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Chat</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div style="padding: 5px;">
+    <h1 class="messages-text">Mensagens</h1>
+    <p class="quant-messages-text opache-text">Você tem ( ) mensagens</p>
+  </div>
 
   <ion-list>
-    <app-search-user></app-search-user>
     <ion-item class="user-contact" (click)="goToChatPage()">
       <ion-thumbnail slot="start">
-        <ion-img src="https://www.w3schools.com/w3css/img_avatar3.png" width="300" class="avatar img"></ion-img>
+        <ion-avatar class="img-user">
+          <ion-img src="https://www.w3schools.com/w3css/img_avatar3.png" width="300"></ion-img>
+        </ion-avatar>
       </ion-thumbnail>
       <div>
         <ion-label class="name">

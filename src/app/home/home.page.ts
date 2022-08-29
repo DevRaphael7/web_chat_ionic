@@ -34,7 +34,6 @@ export class HomePage {
 
   getUserStoreRedux() {
     this.userNgrx.getUser().subscribe(value => {
-      console.log(value)
       this.currentUser = value;
     })
   }

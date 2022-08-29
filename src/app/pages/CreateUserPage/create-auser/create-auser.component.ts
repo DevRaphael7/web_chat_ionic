@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/controllers/UserController/user.service';
 import { UserInformations } from 'src/app/models/user-informations.model';
 import { AlertService } from 'src/app/services/AlertService/alert.service';
@@ -24,8 +25,8 @@ export class CreateAUserComponent {
     private userApi: UserService,
     private alert: AlertService,
     private interfaceUxRedux: InterfaxeUxReduxService,
-    private userRedux: UserNgrxService,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) { }
 
   getSpinnerState = () => this.interfaceUxRedux.getSpinnerState();
@@ -35,25 +36,24 @@ export class CreateAUserComponent {
     this.user.avatar = base64;
   }
 
-  setName(name: string) {
-    this.user['nome'] = name;
+  async closeModal(){
+    await this.modalCtrl.dismiss(null);
   }
 
+  setName = (name: string) => this.user['nome'] = name;
   getUser = () => this.user;
 
   sendUserApi(){
     this.interfaceUxRedux.setSpinner(true);
 
-    if(this.validated()){
-      return;
-    }
-
+    if(this.validated()) return;
+    
     setTimeout(async() => {
       await this.userApi.saveUser(this.user)
       .then(value => {
         this.alert.warnngAlert(value.message);
-        this.userRedux.setUser(this.user);
         this.router.navigateByUrl('home')
+        this.closeModal()
       }).catch((error) =>  {
         console.log(error);
       })
