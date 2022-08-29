@@ -38,8 +38,8 @@ export class HomePage {
 
   getCurrentUser = () => this.currentUser;
 
-  goToChatPage() {
-    this.router.navigateByUrl('chat-page');
+  goToChatPage(user: UserInformations) {
+    this.router.navigateByUrl('chat-page?id=' + user.numero);
   }
 
   getUserStoreRedux() {

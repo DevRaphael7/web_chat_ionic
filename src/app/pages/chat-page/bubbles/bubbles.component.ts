@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 import { MessageUser } from 'src/app/models/messages-user.model';
@@ -10,16 +10,22 @@ import { UserNgrxService } from 'src/app/services/ngrx/user-ngrx.service';
   templateUrl: './bubbles.component.html',
   styleUrls: ['./bubbles.component.scss'],
 })
+
 export class BubblesComponent {
 
+  @Input() friend: UserInformations; 
   private user: UserInformations;
   private messages: MessageUser[] = [];
 
-  constructor(private socket: Socket, private userNgrx: UserNgrxService) {
+  constructor(
+    private socket: Socket, 
+    private userNgrx: UserNgrxService
+  ) {
     this.getMessagesSocket().subscribe();
   }
 
   getMessages = () => this.messages;
+
   async getUser() {
     this.user = await this.userNgrx.getUserState();
   }
