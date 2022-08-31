@@ -1,6 +1,6 @@
 import { UserInformations } from 'src/app/models/user-informations.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ContactNgrxService } from 'src/app/services/ngrx/contact-ngrx.service';
 
 @Component({
@@ -15,21 +15,22 @@ export class ChatPagePage implements OnInit {
   private user: UserInformations;
 
   constructor(
-    private route: ActivatedRouteSnapshot, 
+    private route: ActivatedRoute, 
     private contactNgRx: ContactNgrxService
-  ) { this.getContactByNumber() }
+  ) { }
 
   ngOnInit() {
+    this.getContactByNumber()
     this.route.queryParams
     .subscribe((params: any) => {
         this.number = params.id;
-        this.showBubbles = true;
+        setTimeout(() => this.showBubbles = true, 2000)
       }
     );
   }
 
   async getContactByNumber() {
-    this.user = (await this.contactNgRx.getContactsState()).find(value => value.numero == this.number);
+    this.user = (await this.contactNgRx.getContactsState()).find(value => value.id == this.number);
   }
 
   getNumber = () => this.number;

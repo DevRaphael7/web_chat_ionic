@@ -9,7 +9,7 @@ import { ContactNgrxService } from 'src/app/services/ngrx/contact-ngrx.service';
 
 interface SaveContact{
   numero: number;
-  numeroFriend: number;
+  numero_friend: number;
 }
 
 @Injectable({
@@ -41,11 +41,15 @@ export class ContactService {
     const user = await this.userRedux.getUserState();
 
     return new Promise((resolve, reject) => {
-      this.api.getMethod<ResponseApi<UserInformations[]>>(`contact/${user.numero}`)
+      this.api.getMethod<ResponseApi<any>>(`/contact/${user.numero}`)
       .subscribe({
         next: (value) => {
-          this.contactRedux.setContacts(value.data)
-          resolve(value.data)
+          const listContacts: UserInformations[] = [];
+          Object.keys(value.data).map(key => {
+            listContacts.push(value.data[key])
+          })
+          this.contactRedux.setContacts(listContacts)
+          resolve(listContacts)
         },
         error: (error: ErrorResponseApi<ResponseApi<null>>) => {
           if(error.status == 0){
@@ -67,12 +71,13 @@ export class ContactService {
 
     const newContact: SaveContact = {
       numero: user.numero,
-      numeroFriend: friend_id
+      numero_friend: friend_id
     };
 
     this.api.postMethod<SaveContact>('/contact', newContact)
     .subscribe({
       next: (value: ResponseApi<null>) => {
+        console.log(value)
         this.alert.successAlert(value.message)
       },
       error: (error: ErrorResponseApi<ResponseApi<null>>) => {

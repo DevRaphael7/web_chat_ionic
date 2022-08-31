@@ -2,5 +2,9 @@
 
 <ion-content color="light">
   <app-bubbles *ngIf="showBubbles" [friend]="getUser()"></app-bubbles>
-  <app-input-chat class="fixed end max-width" [friend]="getUser()"></app-input-chat>
+  <app-input-chat 
+      class="fixed end max-width" 
+      [friend]="getUser()"
+      *ngIf="showBubbles" 
+    ></app-input-chat>
 </ion-content>

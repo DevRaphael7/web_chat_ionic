@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 import { MessageUser } from 'src/app/models/messages-user.model';
@@ -11,7 +11,7 @@ import { UserNgrxService } from 'src/app/services/ngrx/user-ngrx.service';
   styleUrls: ['./bubbles.component.scss'],
 })
 
-export class BubblesComponent {
+export class BubblesComponent implements OnInit {
 
   @Input() friend: UserInformations; 
   private user: UserInformations;
@@ -22,6 +22,11 @@ export class BubblesComponent {
     private userNgrx: UserNgrxService
   ) {
     this.getMessagesSocket().subscribe();
+  }
+
+  ngOnInit(): void {
+      console.log(this.friend)
+      this.getUser()
   }
 
   getMessages = () => this.messages;
@@ -37,8 +42,10 @@ export class BubblesComponent {
   getMessagesSocket() {
     return new Observable(() => {
       this.socket.on('conv', (data: MessageUser) => {
-        if(data.numeroDestin == this.user.numero){
+        if(data.numeroDestin == this.user.numero && data.numero == this.friend.id){
           this.messages.push(data);
+        } else if(data.numero == this.user.numero){
+          this.messages.push(data)
         }
       });
     });

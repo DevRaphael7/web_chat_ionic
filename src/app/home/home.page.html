@@ -28,7 +28,7 @@
   </div>
 
   <ion-list>
-    <ion-item class="user-contact" (click)="goToChatPage()" *ngFor="let contact of getContacts()">
+    <ion-item class="user-contact" *ngFor="let contact of getContacts()" (click)="goToChatPage(contact)">
       <ion-thumbnail slot="start">
         <ion-avatar class="img-user">
           <ion-img [src]="contact.avatar" width="300"></ion-img>
